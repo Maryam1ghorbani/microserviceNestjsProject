@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package user;
+
+message CreateUserDTO {
+    string username=1;
+    optional string  firstname=2;
+    optional string lastname=3;
+    string gender=4;
+}
+
+message User {
+    string id =1;
+    string username=2;
+    optional string  firstname=3;
+    optional string lastname=4;
+    string gender=5;
+}
+
+message UserInfo {
+    string id =1;
+    string username=2;
+    optional string  firstname=3;
+    optional string lastname=4;
+    string gender=5;
+    double amount =6;
+    string createdAt = 7;
+    string updateAt = 8;
+}
+
+message Users {
+    repeated UserInfo users =1;
+}
+
+message UpdateUserDTO {
+    string id =1;
+    optional string username=2;
+    optional string  firstname=3;
+    optional string lastname=4;
+    optional string gender=5;
+    optional double amount=6;
+}
+
+message FindOneUserDTO {
+    string id =1;
+}
+message Empty{}
+
+
+service UserService {
+    rpc createUser (CreateUserDTO) returns (User);
+    rpc findOneUser (FindOneUserDTO) returns(UserInfo);
+    rpc updateUser (UpdateUserDTO) returns (UserInfo);
+}
+

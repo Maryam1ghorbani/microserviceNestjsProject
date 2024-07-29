@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package wallet;
+
+
+message CreateWalletDTO{
+    string userId=1;
+}
+
+message Wallet{
+    string id=1;
+    string userId=2;
+    double amount=3;
+}
+
+message FindWalletDTO {
+    string userId=1;
+}
+
+message UpdateWalletDTO {
+    string userId=1;
+    double amount=2;
+
+}
+
+
+
+service WalletService {
+    rpc createWallet (CreateWalletDTO) returns (Wallet);
+    rpc findWallet (FindWalletDTO) returns (Wallet);
+    rpc updateWallet(UpdateWalletDTO) returns(Wallet);
+}
